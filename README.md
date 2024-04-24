@@ -9,7 +9,7 @@ I hated this. Fuck me
 
 using Docker
 ```
-    some docker command
+    docker-compose up
 ```
 or locally, after config the database (see init.sql)
 ```

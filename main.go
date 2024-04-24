@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	time.Sleep(time.Second * 30)
+	time.Sleep(time.Second * 15)
 	dsn := os.Getenv("DSN")
 	dbDriver := os.Getenv("DB_DRIVER")
 	dbAdapter, err := db.NewAdapter(dbDriver, dsn)

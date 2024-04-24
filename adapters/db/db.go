@@ -32,7 +32,7 @@ func (adap *Adapter) Close() {
 }
 
 func (adap *Adapter) ToHistory(answer int32, operation string) error {
-	query := `INSERT INTO arith_hist VALUES (?, ?, ?);`
+	query := `INSERT INTO arith_history VALUES (?, ?, ?);`
 	_, err := adap.db.Exec(query, time.Now(), answer, operation)
 	return err
 }
