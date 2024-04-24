@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"os"
+	"time"
 
 	"github.com/luizpbraga/hexagonal/adapters/db"
 	gRPC "github.com/luizpbraga/hexagonal/adapters/grpc"
@@ -11,6 +12,7 @@ import (
 )
 
 func main() {
+	time.Sleep(time.Second * 30)
 	dsn := os.Getenv("DSN")
 	dbDriver := os.Getenv("DB_DRIVER")
 	dbAdapter, err := db.NewAdapter(dbDriver, dsn)
