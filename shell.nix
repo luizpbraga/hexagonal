@@ -5,5 +5,6 @@
       protobuf
       grpcurl
       docker
+      gnumake
     ];
 }

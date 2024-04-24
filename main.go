@@ -13,8 +13,17 @@ import (
 
 func main() {
 	time.Sleep(time.Second * 15)
+
 	dsn := os.Getenv("DSN")
+	if dsn == "" {
+		dsn = "test:test@tcp(localhost)/hexagonal"
+	}
+
 	dbDriver := os.Getenv("DB_DRIVER")
+	if dbDriver == "" {
+		dbDriver = "mysql"
+	}
+
 	dbAdapter, err := db.NewAdapter(dbDriver, dsn)
 	if err != nil {
 		log.Fatal(err)
