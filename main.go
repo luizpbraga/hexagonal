@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"github.com/luizpbraga/hexagonal/adapters/db"
 	gRPC "github.com/luizpbraga/hexagonal/adapters/grpc"
@@ -10,7 +11,9 @@ import (
 )
 
 func main() {
-	dbAdapter, err := db.NewAdapter("mysql", "test:test@tcp(localhost)/hexagonal")
+	dsn := os.Getenv("DSN")
+	dbDriver := os.Getenv("DB_DRIVER")
+	dbAdapter, err := db.NewAdapter(dbDriver, dsn)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -26,7 +29,7 @@ func main() {
 
 	grpcAdapter := gRPC.NewGRPCService(applicationAPI)
 
-	log.Println("RUNNING GRPC SERVER :9000")
+	log.Println("RUNNING GRPC SERVER")
 
 	grpcAdapter.Run()
 }
